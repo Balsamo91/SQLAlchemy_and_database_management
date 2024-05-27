@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students App</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <style>
+        .navbar {
+            margin: 10px;
+        }
+
+        .centered {
+            max-width: 960px;
+            margin: 10px auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered">
+        <header class="navbar">
+            <section class="navbar-section">
+                <a href="/" class="navbar-brand mr-2">Students App</a>
+            </section>
+            <section class="navbar-section">
+                <a href="/add_student" class="btn btn-link">Add student</a>
+            </section>
+        </header>
+    </div>
+
+    <div class="centered">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
