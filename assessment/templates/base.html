@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management Company</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <style>
+        .navbar {
+            background-color: #FF9F66; /* Change this to your desired color */
+            padding: 1px 0; /* Add padding for better appearance */
+            width: 100%; /* Ensure the navbar spans the full width */
+            border-bottom: 1px solid #FFFAE6;
+        }
+        .navbar-section .btn-link {
+            padding: 10px 20px;
+            border: 2px solid #FFFAE6;
+            background-color: #FFFAE6;
+            border-radius: 20px;
+            color: #002379;
+            text-decoration: none;
+            margin: 0 5px; /* Adjusted margin */
+            display: inline-flex; /* Added display property */
+            align-items: center; /* Added align-items property */
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar-section .btn-link h3 {
+            margin: 0; /* Remove default margin */
+            line-height: 1; /* Added line-height property */
+        }
+        .navbar-section .btn-link:hover {
+            background-color: #002379; /* Change the background color on hover */
+            color: #fff; /* Change the text color on hover */
+        }
+        .container-left {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;/*Ensures the container takes up remaining space */
+        }
+        .container-right {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .gifs {
+            margin-top: 10px;
+            align-self: center;
+            width: 150px;/* Adjust the size as needed */
+            height: 150px;/* Ensure it's a square */
+            border-radius: 50%;
+            overflow: hidden;/* This ensures the edges are clipped to the circle */
+            position: relative;/* Required for absolute positioning of the iframe */
+        }
+        .gifs iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;/* Remove default iframe border */
+            object-fit: cover;/* Ensures the content covers the circular area */
+            transform: scale(2);/* Adjust scale to fit content properly */
+        }
+        .gifs a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            z-index: 1;/* Ensure it is on top of the iframe */
+        }
+        .account-text h5 {
+            margin-top: 10px;
+            text-align: left;
+            position: absolute;
+            margin-left: 50px;
+            top: 220px; /* Adjust this value to position it below "Purchase" */
+            left: 0;
+            color: #000000 !important;
+            font-weight: bold;
+            font-size: x-large;
+       }
+        .title-program h4 {
+            margin-top: 10px;
+            color: #FFFAE6 !important;
+            font-weight: bold;
+        }
+        .left-navbar-section {
+            margin-top: -50px;
+            display: flex;
+            gap: 20px;
+        }
+        .right-navbar-section {
+            margin-top: -50px;
+        }
+        .table-warehouse {
+
+            margin-top: 60px;
+            width: 100%;
+        }
+        .table-content {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .footer-footer {
+            background-color: #FFFAE6;
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-top: 1px solid #e7e7e7;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .content-wrapper {
+            padding-bottom: 80px auto; /* Adjust the value to accommodate the footer height */
+        }
+        .form-group-main {
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 60px;
+        }
+        .button-submit {
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="navbar">
+            <div class="container-left">
+                <section class="navbar-section">
+                    <div class="left-navbar-section">
+                        <a href="/purchase" class="btn btn-link"><h3>Purchase</h3></a>
+                        <a href="/sale" class="btn btn-link"><h3>Sale</h3></a>
+                    </div>
+                    <div class="account-text">
+                        <h5 class="text-primary">Account: €{{ balance }}</h5>
+                    </div>
+            </div>
+            </section>
+            <section class="navbar-center">
+                <div class="container">
+                        <div class="gifs">
+                            <iframe src="https://giphy.com/embed/PG1nBLxrY8ZlS08pTh" frameBorder="0" class="giphy-embed" allowfullscreen></iframe>
+                            <a href="/"></a>
+                        </div>
+                        <div class="title-program">
+                            <h4 class="text-primary">The Warehouse Company</h4>
+                        </div>
+                </div>
+            </section>
+            <div class="container-right">
+            <section class="navbar-section">
+                    <div class="right-navbar-section">
+                        <a href="/balance" class="btn btn-link"><h3>Balance</h3></a>
+                        <a href="/history" class="btn btn-link"><h3>History</h3></a>
+                    </div>
+                </div>
+            </section>
+        </header>
+        <div class="table-warehouse">
+            {% block content_main_page %}
+            {% endblock %}
+        </div>
+        <div class="form-group-main">
+            {% block content_purchase %}
+            {% endblock %}
+        </div>
+        <div class="form-group-main">
+            {% block content_sale %}
+            {% endblock %}
+        </div>
+        <div class="form-group-main">
+            {% block content_balance %}
+            {% endblock %}
+        </div>
+        <div class="table-warehouse">
+            {% block content_history %}
+            {% endblock %}
+        </div>
+
+        <footer class="footer-footer">
+            <p>&copy; 2024 Warehouse Management Company. All rights reserved.</p>
+        </footer>
+    </div>
+
+    
+</body>
+</html>

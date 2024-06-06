@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content_history %}
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th><div class="table-content">ID</div></th>
+            <th><div class="table-content">Type</div></th>
+            <th><div class="table-content">Name</div></th>
+            <th><div class="table-content">Price</div></th>
+            <th><div class="table-content">Quantity</div></th>
+            <th><div class="table-content">Timestamp</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for h in operations_recorded %}
+            <tr>
+                <td><div class="table-content">{{ h.id }}</div></td>
+                <td><div class="table-content">{{ h.type }}</div></td>
+                <td><div class="table-content">{{ h.name }}</div></td>
+                <td><div class="table-content">{{ h.price }}</div></td>
+                <td><div class="table-content">{{ h.quantity }}</div></td>
+                <td><div class="table-content">{{ h.timestamp }}</div></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

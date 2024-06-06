@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content_purchase %}
+<form action="/submit_purchase" method="post">
+    <div class="form-group">
+        <label class="form-label" for="name">Name of the product: </label>
+        <input class="form-input" type="text" name="name" id="name" placeholder="ex: Car" required>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="price">Enter the unit Price €: </label>
+        <input class="form-input" type="number" name="price" id="price" placeholder="minimum is 1" min="1" required>
+    </div>
+    <div class="form-group">
+        <label class="form-label" for="quantity">Enter the Quantity: </label>
+        <input class="form-input" type="number" name="quantity" id="quantity" placeholder="minimum is 1" min="1" required>
+    </div>
+    <div class="button-submit">
+        <button class="btn btn-primary" type="submit">Submit for Purchase</button>
+        {% if error_message_funds %}
+            <p class="error-message" style="color: red;">{{ error_message_funds }}</p>
+        {% endif %}
+        {% if success_message %}
+            <p class="success-message" style="color: green;">{{ success_message }}</p>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}

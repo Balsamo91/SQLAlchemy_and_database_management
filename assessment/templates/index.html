@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content_main_page %}
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th><div class="table-content">ID</div></th>
+            <th><div class="table-content">Name</div></th>
+            <th><div class="table-content">Price</div></th>
+            <th><div class="table-content">Quantity</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for w in warehouse %}
+            <tr>
+                <td><div class="table-content">{{ w.id }}</div></td>
+                <td><div class="table-content">{{ w.name }}</div></td>
+                <td><div class="table-content">{{ w.price }}</div></td>
+                <td><div class="table-content">{{ w.quantity }}</div></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

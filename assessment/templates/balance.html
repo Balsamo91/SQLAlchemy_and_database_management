@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content_balance %}
+<form action="/submit_balance" method="post">
+    <label class="form-label" for="money">Please enter Value €:</label>
+    <input class="form-input" type="number" id="money" name="money" value="1" min="1" required>
+    <div class="form-group">
+        <label class="form-label">Choose Operation Type:</label>
+        <label class="form-radio">
+            <input type="radio" name="balance" value="Add" checked required>
+            <i class="form-icon"></i> Add
+        </label>
+        <label class="form-radio">
+            <input type="radio" name="balance" value="Withdraw" required>
+            <i class="form-icon"></i> Withdraw
+        </label>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    {% if error_message_funds_again %}
+        <p class="error-message" style="color: red;">{{ error_message_funds_again }}</p>
+    {% endif %}
+</form>
+{% endblock %}
