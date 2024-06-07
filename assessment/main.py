@@ -46,6 +46,17 @@ def history():
     account = Balance.query.first().amount
     return render_template("history.html", operations_recorded=operations_recorded, balance=account)
 
+@app.route('/history/<history_id>', methods=['GET','POST'])
+def delete_history(history_id):
+    delete = History.query.filter_by(id=history_id).first()
+    db.session.delete(delete)
+    db.session.commit()
+
+    operations_recorded = History.query.all()
+    account = Balance.query.first().amount
+
+    return render_template("history.html", operations_recorded=operations_recorded, balance=account)
+
 
 @app.route('/purchase')
 def purchase():
@@ -95,7 +106,6 @@ def submit_purchase():
 
 
     # Redirect me to the main page
-    time.sleep(2)
     return redirect('/') 
 
 
@@ -177,13 +187,6 @@ def submit_balance():
     
     # Redirect me to the main page
     return redirect('/') 
-
-
-# @app.route('/history')
-# def history():
-#     account = Balance.query.first().amount
-#     return render_template("history.html", operations_recorded=operations_recorded, balance=account)
-
 
 
 with app.app_context():
