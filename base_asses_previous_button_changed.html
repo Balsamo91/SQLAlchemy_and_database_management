@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warehouse Management Company</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
+        }
+        .content-wrapper {
+            flex-grow: 1; 
+        }
+        .footer-footer {
+            background-color: #FFFAE6;
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-top: 1px solid #e7e7e7;
+            margin-top: auto; /* Push the footer to the bottom */
+            width: 100%; /* Ensure footer spans the full width */
+        }
+        
+        .navbar {
+            background-color: #FF9F66;
+            padding: 1px 0;
+            width: 100%;
+            border-bottom: 1px solid #FFFAE6;
+        }
+        .navbar-section .btn-link {
+            padding: 10px 20px;
+            border: 2px solid #FFFAE6;
+            background-color: #FFFAE6;
+            border-radius: 20px;
+            color: #002379;
+            text-decoration: none;
+            margin: 0 5px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar-section .btn-link h3 {
+            margin: 0;
+            line-height: 1;
+        }
+        .navbar-section .btn-link:hover {
+            background-color: #002379;
+            color: #fff;
+        }
+        .container-left, .container-right {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+        .gifs {
+            margin-top: 10px;
+            align-self: center;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+        .gifs iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+            transform: scale(2);
+        }
+        .gifs a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .account-text h5 {
+            margin-top: 10px;
+            text-align: left;
+            position: absolute;
+            margin-left: 50px;
+            top: 220px;
+            left: 0;
+            color: #000000 !important;
+            font-weight: bold;
+            font-size: x-large;
+       }
+        .title-program h4 {
+            margin-top: 10px;
+            color: #FFFAE6 !important;
+            font-weight: bold;
+        }
+        .left-navbar-section {
+            margin-top: -50px;
+            display: flex;
+            gap: 20px;
+        }
+        .right-navbar-section {
+            margin-top: -50px;
+        }
+        .table-warehouse {
+            margin-top: 60px;
+            width: 100%;
+        }
+        .table-content {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .form-group-main {
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-top: 60px;
+        }
+        .button-submit {
+            margin-top: 10px;
+        }
+        .button {
+        position: relative;
+        display: inline-block;
+        margin: 20px;
+        }
+
+        .button a {
+            color: white;
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #FFA12B;
+            display: block;
+            position: relative;
+            padding: 15px 30px;
+            border-radius: 5px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            text-shadow: 0px 1px 0px #000;
+            filter: dropshadow(color=#000, offx=0px, offy=1px);
+            -webkit-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+            -moz-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+            box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        .button a:active {
+            top: 10px;
+            background-color: #F78900;
+            -webkit-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+            -moz-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
+            box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
+        }
+
+        .button:after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            padding: 4px;
+            position: absolute;
+            bottom: -15px;
+            left: -4px;
+            z-index: -1;
+            background-color: #2B1800;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="navbar">
+            <div class="container-left">
+                <section class="navbar-section">
+                    <div class="left-navbar-section">
+                        <div class="button">
+                            <a href="/purchase">Purchase</a>
+                        </div>
+                        <div class="button">
+                            <a href="/sale">Sale</a>
+                        </div>
+                    </div>
+                    <div class="account-text">
+                        <h5 class="text-primary">Account: €{{ balance }}</h5>
+                    </div>
+                </section>
+            </div>
+            <section class="navbar-center">
+                <div class="container">
+                    <div class="gifs">
+                        <iframe src="https://giphy.com/embed/PG1nBLxrY8ZlS08pTh" frameBorder="0" class="giphy-embed" allowfullscreen></iframe>
+                        <a href="/"></a>
+                    </div>
+                    <div class="title-program">
+                        <h4 class="text-primary">The Warehouse Company</h4>
+                    </div>
+                </div>
+            </section>
+            <div class="container-right">
+                <section class="navbar-section">
+                    <div class="right-navbar-section">
+                        <div class="button">
+                            <a href="/balance">Balance</a>
+                        </div>
+                        <div class="button">
+                            <a href="/history">history</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </header>
+        <div class="table-warehouse">
+            {% block content_main_page %}
+            {% endblock %}
+        </div>
+        <div class="form-group-main">
+            {% block content_purchase %}
+            {% endblock %}
+        </div>
+        <div class="form-group-main">
+            {% block content_sale %}
+            {% endblock %}
+        </div>
+        <div class="form-group-main">
+            {% block content_balance %}
+            {% endblock %}
+        </div>
+        <div class="table-warehouse">
+            {% block content_history %}
+            {% endblock %}
+        </div>
+    </div>
+    <footer class="footer-footer">
+        <p>&copy; 2024 Warehouse Management Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>
