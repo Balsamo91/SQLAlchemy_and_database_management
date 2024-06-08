@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-import time
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///warehouse.db'
@@ -55,7 +54,7 @@ def delete_history(history_id):
     operations_recorded = History.query.all()
     account = Balance.query.first().amount
 
-    return render_template("history.html", operations_recorded=operations_recorded, balance=account)
+    return render_template("history.html", operations_recorded=operations_recorded, balance=account) and redirect('/history')
 
 
 @app.route('/purchase')
@@ -73,8 +72,7 @@ def submit_purchase():
     price = float(request.form['price'])
     quantity = int(request.form['quantity'])
 
-    if account >= price * quantity:
-    # If user enters the same item, this will catch it and it will add the quantity, if not it will add the dict to the list warehouse_list[] 
+    if account >= price * quantity: 
         item_exist = False
 
         for p in warehouse_list:
@@ -96,14 +94,9 @@ def submit_purchase():
         db.session.add(new_purchase_history)
         db.session.commit()
 
-        # success_message = f"Purchase has been successful! {quantity} unit(s) of {name} bought for a total of {price * quantity}."
-        # time.sleep(2)
-        # return render_template('purchase.html', balance=account, success_message=success_message)
-
     else:
         error_message_funds = "You're broke Bruah! Retry when you've got Coins! ;)"
         return render_template('purchase.html', balance=account, error_message_funds=error_message_funds)
-
 
     # Redirect me to the main page
     return redirect('/') 
@@ -152,7 +145,6 @@ def submit_sale():
         error_message_name = f"Product '{name}' not found in the database."
         return render_template('sale.html', balance=account, error_message_name=error_message_name)
 
-    # Redirect me to the main page
     return redirect('/') 
 
 @app.route('/balance')
@@ -164,8 +156,8 @@ def balance():
 def submit_balance():
     balance_record = Balance.query.first()
     account = balance_record.amount
-    amount = float(request.form['money']) # 'money' is the name found in the balance.html
-    operation = request.form['balance'] # 'balance' is the name found in the balance.html
+    amount = float(request.form['money'])
+    operation = request.form['balance']
 
     if operation == 'Add':
         account += amount

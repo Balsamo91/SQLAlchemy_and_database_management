@@ -8,31 +8,10 @@
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
     <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* Ensure the body takes up at least the full height of the viewport */
-        }
-        .content-wrapper {
-            flex-grow: 1; 
-        }
-        .footer-footer {
-            background-color: #FFFAE6;
-            color: #000000;
-            padding: 20px;
-            text-align: center;
-            font-weight: bold;
-            border-top: 1px solid #e7e7e7;
-            margin-top: auto; /* Push the footer to the bottom */
-            width: 100%; /* Ensure footer spans the full width */
-        }
-        
         .navbar {
-            background-color: #FF9F66;
-            padding: 1px 0;
-            width: 100%;
+            background-color: #FF9F66; /* Change this to your desired color */
+            padding: 1px 0; /* Add padding for better appearance */
+            width: 100%; /* Ensure the navbar spans the full width */
             border-bottom: 1px solid #FFFAE6;
         }
         .navbar-section .btn-link {
@@ -42,20 +21,20 @@
             border-radius: 20px;
             color: #002379;
             text-decoration: none;
-            margin: 0 5px;
-            display: inline-flex;
-            align-items: center;
+            margin: 0 5px; /* Adjusted margin */
+            display: inline-flex; /* Added display property */
+            align-items: center; /* Added align-items property */
             transition: background-color 0.3s, color 0.3s;
         }
         .navbar-section .btn-link h3 {
-            margin: 0;
-            line-height: 1;
+            margin: 0; /* Remove default margin */
+            line-height: 1; /* Added line-height property */
         }
         .navbar-section .btn-link:hover {
-            background-color: #002379;
-            color: #fff;
+            background-color: #002379; /* Change the background color on hover */
+            color: #fff; /* Change the text color on hover */
         }
-        .container-left, .container-right {
+        .container-left {
             margin-left: 50px;
             margin-right: 50px;
             display: flex;
@@ -67,16 +46,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex: 1;
+            flex: 1;/*Ensures the container takes up remaining space */
+        }
+        .container-right {
+            margin-left: 50px;
+            margin-right: 50px;
+            display: flex;
+            flex-direction: column;
         }
         .gifs {
             margin-top: 10px;
             align-self: center;
-            width: 150px;
-            height: 150px;
+            width: 150px;/* Adjust the size as needed */
+            height: 150px;/* Ensure it's a square */
             border-radius: 50%;
-            overflow: hidden;
-            position: relative;
+            overflow: hidden;/* This ensures the edges are clipped to the circle */
+            position: relative;/* Required for absolute positioning of the iframe */
         }
         .gifs iframe {
             position: absolute;
@@ -84,9 +69,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
-            object-fit: cover;
-            transform: scale(2);
+            border: none;/* Remove default iframe border */
+            object-fit: cover;/* Ensures the content covers the circular area */
+            transform: scale(2);/* Adjust scale to fit content properly */
         }
         .gifs a {
             position: absolute;
@@ -95,14 +80,14 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            z-index: 1;
+            z-index: 1;/* Ensure it is on top of the iframe */
         }
         .account-text h5 {
             margin-top: 10px;
             text-align: left;
             position: absolute;
             margin-left: 50px;
-            top: 220px;
+            top: 220px; /* Adjust this value to position it below "Purchase" */
             left: 0;
             color: #000000 !important;
             font-weight: bold;
@@ -122,12 +107,27 @@
             margin-top: -50px;
         }
         .table-warehouse {
+
             margin-top: 60px;
             width: 100%;
         }
         .table-content {
             margin-left: 50px;
             margin-right: 50px;
+        }
+        .footer-footer {
+            background-color: #FFFAE6;
+            color: #000000;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-top: 1px solid #e7e7e7;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .content-wrapper {
+            padding-bottom: 80px auto; /* Adjust the value to accommodate the footer height */
         }
         .form-group-main {
             margin-left: 50px;
@@ -137,57 +137,7 @@
         .button-submit {
             margin-top: 10px;
         }
-        .button {
-        position: relative;
-        display: inline-block;
-        margin: 20px;
-        }
 
-        .button a {
-            color: white;
-            font-family: Helvetica, sans-serif;
-            font-weight: bold;
-            font-size: 24px;
-            text-align: center;
-            text-decoration: none;
-            background-color: #FFA12B;
-            display: block;
-            position: relative;
-            padding: 15px 30px;
-            border-radius: 5px;
-            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-            text-shadow: 0px 1px 0px #000;
-            filter: dropshadow(color=#000, offx=0px, offy=1px);
-            -webkit-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
-            -moz-box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
-            box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-        }
-
-        .button a:active {
-            top: 10px;
-            background-color: #F78900;
-            -webkit-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
-            -moz-box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3pxpx 0 #915100;
-            box-shadow: inset 0 1px 0 #FFE5C4, inset 0 -3px 0 #915100;
-        }
-
-        .button:after {
-            content: "";
-            height: 100%;
-            width: 100%;
-            padding: 4px;
-            position: absolute;
-            bottom: -15px;
-            left: -4px;
-            z-index: -1;
-            background-color: #2B1800;
-            -webkit-border-radius: 5px;
-            -moz-border-radius: 5px;
-            border-radius: 5px;
-        }
     </style>
 </head>
 <body>
@@ -196,41 +146,33 @@
             <div class="container-left">
                 <section class="navbar-section">
                     <div class="left-navbar-section">
-                        <div class="button">
-                            <a href="/purchase">Purchase</a>
-                        </div>
-                        <div class="button">
-                            <a href="/sale">Sale</a>
-                        </div>
+                        <a href="/purchase" class="btn btn-link"><h3>Purchase</h3></a>
+                        <a href="/sale" class="btn btn-link"><h3>Sale</h3></a>
                     </div>
                     <div class="account-text">
                         <h5 class="text-primary">Account: €{{ balance }}</h5>
                     </div>
-                </section>
             </div>
+            </section>
             <section class="navbar-center">
                 <div class="container">
-                    <div class="gifs">
-                        <iframe src="https://giphy.com/embed/PG1nBLxrY8ZlS08pTh" frameBorder="0" class="giphy-embed" allowfullscreen></iframe>
-                        <a href="/"></a>
-                    </div>
-                    <div class="title-program">
-                        <h4 class="text-primary">The Warehouse Company</h4>
-                    </div>
+                        <div class="gifs">
+                            <iframe src="https://giphy.com/embed/PG1nBLxrY8ZlS08pTh" frameBorder="0" class="giphy-embed" allowfullscreen></iframe>
+                            <a href="/"></a>
+                        </div>
+                        <div class="title-program">
+                            <h4 class="text-primary">The Warehouse Company</h4>
+                        </div>
                 </div>
             </section>
             <div class="container-right">
-                <section class="navbar-section">
+            <section class="navbar-section">
                     <div class="right-navbar-section">
-                        <div class="button">
-                            <a href="/balance">Balance</a>
-                        </div>
-                        <div class="button">
-                            <a href="/history">history</a>
-                        </div>
+                        <a href="/balance" class="btn btn-link"><h3>Balance</h3></a>
+                        <a href="/history" class="btn btn-link"><h3>History</h3></a>
                     </div>
-                </section>
-            </div>
+                </div>
+            </section>
         </header>
         <div class="table-warehouse">
             {% block content_main_page %}
@@ -252,9 +194,13 @@
             {% block content_history %}
             {% endblock %}
         </div>
+
+        <footer class="footer-footer">
+            <p>&copy; 2024 Warehouse Management Company. All rights reserved.</p>
+        </footer>
     </div>
-    <footer class="footer-footer">
-        <p>&copy; 2024 Warehouse Management Company. All rights reserved.</p>
-    </footer>
+
+    
 </body>
 </html>
+
